@@ -52,57 +52,32 @@ class MyApp extends StatelessWidget {
                     letterSpacing: 2.5,
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
+                SizedBox(
+                  height: 7,
+                ),
+                SizedBox(
+                  height: 30,
+                  child: Divider(
                     color: Colors.white,
-                  ),
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.phone,
-                        color: Colors.teal,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        '076 139 8409',
-                        style: TextStyle(
-                          color: Colors.teal[800],
-                          fontFamily: 'Source Sans Pro',
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
+                    thickness: 3,
+                    indent: 80,
+                    endIndent: 80,
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 25),
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                  ),
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.email,
-                        color: Colors.teal,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'rijkdw1@gmail.com',
-                        style: TextStyle(
-                          color: Colors.teal[800],
-                          fontFamily: 'Source Sans Pro',
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
+                DetailCard(
+                  text: '076 139 8409',
+                  iconData: Icons.phone,
+                  onPressed: () => print('phone pressed'),
+                ),
+                DetailCard(
+                  text: 'rijkdw1@gmail.com',
+                  iconData: Icons.email,
+                  onPressed: () => print('email pressed'),
+                ),
+                DetailCard(
+                  text: 'github.com/rijkdw',
+                  iconData: Icons.web,
+                  onPressed: () => print('website pressed'),
                 ),
               ],
             ),
@@ -112,3 +87,36 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+class DetailCard extends StatelessWidget {
+
+  final String text;
+  final IconData iconData;
+  final VoidCallback onPressed;
+
+  DetailCard({this.text, this.iconData, this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.fromLTRB(25, 10, 25, 0),
+      color: Colors.white,
+      child: ListTile(
+        leading: Icon(
+          this.iconData,
+          color: Colors.teal,
+        ),
+        title: Text(
+          this.text,
+          style: TextStyle(
+            color: Colors.teal[800],
+            fontFamily: 'Source Sans Pro',
+            fontSize: 20,
+          ),
+        ),
+        onTap: () => this.onPressed(),
+      ),
+    );
+  }
+}
+
