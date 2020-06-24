@@ -29,3 +29,11 @@ flutter:
     - family: Yeseva One
       fonts:
         - asset: fonts/YesevaOne-Regular.ttf
+
+    - family: Source Sans Pro
+      fonts:
+        - asset: fonts/SourceSansPro-Regular.ttf
+
+    - family: Lobster
+      fonts:
+        - asset: fonts/Lobster-Regular.ttf
