@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +16,10 @@ class MyApp extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
-              colors: [Colors.teal, Colors.teal[300]],
+              colors: [
+                Colors.green[900],
+                Colors.green[400],
+              ],
             ),
           ),
           child: SafeArea(
@@ -34,6 +38,9 @@ class MyApp extends StatelessWidget {
                     backgroundImage: AssetImage('images/me.jpg'),
                   ),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
                 Text(
                   'Rijk de Wet',
                   style: TextStyle(
@@ -46,38 +53,38 @@ class MyApp extends StatelessWidget {
                   'FLUTTER DEVELOPER',
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.teal[100],
+                    color: Colors.green[100],
                     fontFamily: 'Source Sans Pro',
                     fontWeight: FontWeight.bold,
                     letterSpacing: 2.5,
                   ),
                 ),
                 SizedBox(
-                  height: 7,
+                  height: 10,
                 ),
                 SizedBox(
                   height: 30,
                   child: Divider(
                     color: Colors.white,
                     thickness: 3,
-                    indent: 80,
-                    endIndent: 80,
+                    indent: 25,
+                    endIndent: 25,
                   ),
                 ),
                 DetailCard(
                   text: '076 139 8409',
                   iconData: Icons.phone,
-                  onPressed: () => print('phone pressed'),
+                  onPressed: () => launch('tel:0761398409'),
                 ),
                 DetailCard(
                   text: 'rijkdw1@gmail.com',
                   iconData: Icons.email,
-                  onPressed: () => print('email pressed'),
+                  onPressed: () => launch('mailto:rijkdw1@gmail.com'),
                 ),
                 DetailCard(
                   text: 'github.com/rijkdw',
                   iconData: Icons.web,
-                  onPressed: () => print('website pressed'),
+                  onPressed: () => launch('https://github.com/rijkdw'),
                 ),
               ],
             ),
@@ -89,7 +96,6 @@ class MyApp extends StatelessWidget {
 }
 
 class DetailCard extends StatelessWidget {
-
   final String text;
   final IconData iconData;
   final VoidCallback onPressed;
@@ -104,12 +110,13 @@ class DetailCard extends StatelessWidget {
       child: ListTile(
         leading: Icon(
           this.iconData,
-          color: Colors.teal,
+          color: Colors.green[700],
+          size: 25,
         ),
         title: Text(
           this.text,
           style: TextStyle(
-            color: Colors.teal[800],
+            color: Colors.green[800],
             fontFamily: 'Source Sans Pro',
             fontSize: 20,
           ),
@@ -119,4 +126,3 @@ class DetailCard extends StatelessWidget {
     );
   }
 }
-
